@@ -10,6 +10,13 @@ public class ArrayListTest {
 		
 		ArrayList<Book> library = new ArrayList();
 		
+		Book [] library2 = new Book[2];
+		library2[0] = new Book("태백산맥1", "조정래");
+		library2[1] = new Book("태백산맥2", "조정래");
+		// library2[2] = new Book("태백산맥3", "조정래");djq
+
+		System.out.println(library2);
+
 		library.add(new Book("태백산맥1", "조정래"));
 		library.add(new Book("태백산맥2", "조정래"));
 		library.add(new Book("태백산맥3", "조정래"));
