@@ -18,6 +18,10 @@ public class VIPCustomer extends Customer{
         return agentID;
     }
 
+    public void getSuper(){
+       System.out.println("이건" + super.getClass());
+    }
+
     //상위 클래스에서 정의된 메서드의 구현내용이 하위클래스에서 재구현할 경우 @Override를 사용해서 메서드를 재정의 할 수 있다.
     @Override
     public int calcPrice(int price) {
@@ -25,5 +29,10 @@ public class VIPCustomer extends Customer{
         bonusPoint2 = bonusPoint + (int)(price * bonusRatio);
         return price - (int)(price * salesRatio);
 
+    }
+
+    public String showCustomerInfo(){
+        //상위 클래스의 showCustomerInfo()메서드를 사용하고 거기에 
+        return super.showCustomerInfo()+ " 담당 상담원 번호는 " + agentID + "입니다";
     }
 }
