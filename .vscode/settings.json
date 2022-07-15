@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "Learn_Java3/src",
         "Learn_Java",
-        "Learn_Java3/src"
+        "servlet/src/main/java/hello/servlet"
     ]
 }
