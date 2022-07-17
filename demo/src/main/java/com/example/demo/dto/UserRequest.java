@@ -1,10 +1,12 @@
 package com.example.demo.dto;
 
+
 public class UserRequest {
     
     private String name;
     private String email;
     private int age;
+
 
 	public String getName() {
 		return this.name;
@@ -33,6 +35,6 @@ public class UserRequest {
     @Override
     public String toString() {
         return "UserRequest{" + "name = " + name + '\n' + ", email = " + email +
-        '\n' + ", age = " + age + '}';
+        '\n' + ", age = " + age + '\n' +  '}';
     }
 }
