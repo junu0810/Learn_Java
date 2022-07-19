@@ -3,5 +3,6 @@
         "Learn_Java3/src",
         "Learn_Java",
         "servlet/src/main/java/hello/servlet"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
