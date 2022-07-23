@@ -2,12 +2,14 @@ package com.fastcamp.jpa.bookmanager.repository;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import com.fastcamp.jpa.bookmanager.domain.UserTable;
 
+import net.bytebuddy.asm.Advice;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -120,22 +122,51 @@ class UserRepositoryTest {
    }
    @Test
      void select(){
-       System.out.println(userRepository.findByName("dennis"));
+//       System.out.println(userRepository.findByName("dennis"));
+//
+//       System.out.println("findByEmail : " + userRepository.findByEmail("martin@fastcampus.com"));
+//       System.out.println("getByEmail : " + userRepository.getByEmail("martin@fastcampus.com"));
+//       System.out.println("readByEmail : " + userRepository.readByEmail("martin@fastcampus.com"));
+//       System.out.println("queryByEmail : " + userRepository.queryByEmail("martin@fastcampus.com"));
+//       System.out.println("searchByEmail : " + userRepository.searchByEmail("martin@fastcampus.com"));
+//       System.out.println("streamByEmail : " + userRepository.streamByEmail("martin@fastcampus.com"));
+//       System.out.println("findUserByEmail : " + userRepository.findUserByEmail("martin@fastcampus.com"));
+//       System.out.println("findSomethingByEmail : " + userRepository.findSomethingByEmail("martin@fastcampus.com"));
+//
+//       // 이름의 Limit로 쿼리가 실행된다.
+//       System.out.println("findFirst1ByName : " + userRepository.findFirst1ByName("martin"));
+//       System.out.println("findTop2ByName : " + userRepository.findTop2ByName("martin"));
+//       System.out.println("findLast1ByName : " + userRepository.findLast2ByName("martin"));
 
-       System.out.println("findByEmail : " + userRepository.findByEmail("martin@fastcampus.com"));
-       System.out.println("getByEmail : " + userRepository.getByEmail("martin@fastcampus.com"));
-       System.out.println("readByEmail : " + userRepository.readByEmail("martin@fastcampus.com"));
-       System.out.println("queryByEmail : " + userRepository.queryByEmail("martin@fastcampus.com"));
-       System.out.println("searchByEmail : " + userRepository.searchByEmail("martin@fastcampus.com"));
-       System.out.println("streamByEmail : " + userRepository.streamByEmail("martin@fastcampus.com"));
-       System.out.println("findUserByEmail : " + userRepository.findUserByEmail("martin@fastcampus.com"));
-       System.out.println("findSomethingByEmail : " + userRepository.findSomethingByEmail("martin@fastcampus.com"));
+//       //AND와 OR조건으로 쿼리문 실행하기
+//       System.out.println("findByEmailAndName : " + userRepository.
+//               findByEmailAndName("martin@fastcampus.com", "martin"));
+//       System.out.println("findByEmailOrName : " + userRepository.
+//               findByEmailOrName("martin@fastcampus.com","martin"));
+//
+//       //시간에 대한 조건설정
+//       //하루전 이후의 데이터값들을 조회함
+//       System.out.println("findByCreatedAtAfter : " + userRepository.findByCreatedAtAfter(LocalDateTime.now().minusDays(1)));
+//
+//       //ID를 통해 이후값과 이전값을 찾을 수 도 있다.
+//       System.out.println("findByIdAfter : " + userRepository.findByIdAfter(4L));
+//
+//       //createdAt보다 값이 큰것을 호출한다. (Before, After보다 좀더 범용적으로 사용이 가능하다.)
+//       System.out.println("findByCreatedAtGreaterThanAnd : " + userRepository.
+//               findByCreatedAtGreaterThan(LocalDateTime.now().minusDays(1)));
+//
+//       //크거나 같은것 즉 이상으로 검색이 된다.(Before과 After는 같은값은 포함하지 않는다.)
+//       System.out.println("findByCreatedAtGreaterThanEqual : " + userRepository.
+//               findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(1)));
 
-       // 이름의 Limit로 쿼리가 실행된다.
-       System.out.println("findFirst1ByName : " + userRepository.findFirst1ByName("martin"));
-       System.out.println("findTop2ByName : " + userRepository.findTop2ByName("martin"));
-       System.out.println("findLast1ByName : " + userRepository.findLast2ByName("martin"));
+       //사이값을 조회하는 Query문 (Between은 입력한 양쪽끝을 값을 포함해서 결과값을 나타냄)
+       System.out.println("findByCreatedAtBetween : " + userRepository.
+               findByCreatedAtBetween(LocalDateTime.now().minusDays(1) , LocalDateTime.now().plusDays(1)));
+       System.out.println("findByIdBetween : " + userRepository.
+               findByIdBetween(1L,2L));
+       //Between과 아래 쿼리는 동일하게 돌아감
+       System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.
+               findByIdGreaterThanEqualAndIdLessThanEqual(1L,3L));
+
    }
-
-
 }

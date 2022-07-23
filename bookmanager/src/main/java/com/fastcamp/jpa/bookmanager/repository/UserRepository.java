@@ -5,6 +5,7 @@ import com.fastcamp.jpa.bookmanager.domain.UserTable;
 import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -22,8 +23,16 @@ public interface UserRepository extends JpaRepository<UserTable, Long> {
     UserTable findSomethingByEmail(String email);
     List<UserTable> findFirst1ByName(String name);
     List<UserTable> findTop2ByName(String name);
-
     List<UserTable> findLast2ByName(String name);
 
+    List<UserTable> findByEmailAndName(String email, String name);
+    List<UserTable> findByEmailOrName(String email, String name);
+    List<UserTable> findByCreatedAtAfter(LocalDateTime yestarday);
+    UserTable findByIdAfter(Long Id);
+    List<UserTable> findByCreatedAtGreaterThan(LocalDateTime yestarday);
+    List<UserTable> findByCreatedAtGreaterThanEqual(LocalDateTime yestarday);
+    List<UserTable> findByCreatedAtBetween(LocalDateTime yestarday,LocalDateTime tomorrow);
+    List<UserTable> findByIdBetween(Long Id1, Long Id2);
+    List<UserTable> findByIdGreaterThanEqualAndIdLessThanEqual(Long id1, Long id2);
 }
 
