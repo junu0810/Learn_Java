@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @Data //는 {@cdoe @Getter @Setter @RequiredArgsConstructor @ToString @ EqualsAndHashCode}들을 선언하는것과 동일함
 @Builder //테스트를 만들때 자주사용되는 코드로 객체를 생성하고 필드값을 Builder의 형식으로 선언함
 // EX) User.builder().name("baek").email("test@daum.net").build(); 로 객체를 생성 할 수 있다.
-@Entity(name = "UserTable") //DB에서의 테이블과 자바 객체간의 연결을 만들어주는데 이때 자바객체라는걸 Entity라고 함 (Entity는 PK가 반드시 필요함)
+@Entity(name = "users") //DB에서의 테이블과 자바 객체간의 연결을 만들어주는데 이때 자바객체라는걸 Entity라고 함 (Entity는 PK가 반드시 필요함)
 public class UserTable {
 
 	@Id //PK
