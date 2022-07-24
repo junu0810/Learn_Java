@@ -34,5 +34,14 @@ public interface UserRepository extends JpaRepository<UserTable, Long> {
     List<UserTable> findByCreatedAtBetween(LocalDateTime yestarday,LocalDateTime tomorrow);
     List<UserTable> findByIdBetween(Long Id1, Long Id2);
     List<UserTable> findByIdGreaterThanEqualAndIdLessThanEqual(Long id1, Long id2);
+    List<UserTable> findByIdIsNotNull();
+    List<UserTable> findByNameIn(List<String> names);
+    List<UserTable> findByNameStartingWith(String name);
+    List<UserTable> findByNameEndingWith(String name);
+    List<UserTable> findByNameContains(String name);
+    List<UserTable> findByNameLike(String name);
+    Set<UserTable> findUserTableByNameIs(String name);
+    Set<UserTable> findUserTableByName(String name);
+    Set<UserTable> findUserTableByNameEquals(String name);
 }
 

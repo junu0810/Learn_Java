@@ -30,11 +30,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Transactional
 class UserRepositoryTest {
 
-   @Autowired
-   private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-   @Test
-   void crud() {
+    @Test
+    void crud() {
 //        // @NoArgsConstructor덕분에 요소없이 객체 생성 가능 argument를 넣으면 그 데이터로 생성됨
 //        userRepository.save(new UserTable());
 //
@@ -112,16 +112,17 @@ class UserRepositoryTest {
 //        // ------------------------------------------------------//
 //        // 해당 아이디를 찾고 데이터 변경 update
         userRepository.save(new UserTable("david", "david@fastcampus.com"));
-        UserTable changeuser= userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        UserTable changeuser = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         changeuser.setEmail("martin-updated@fastcampus.com");
         userRepository.save(changeuser);
 
         System.out.println(changeuser);
 //        // ------------------------------------------------------//
 
-   }
-   @Test
-     void select(){
+    }
+
+    @Test
+    void select() {
 //       System.out.println(userRepository.findByName("dennis"));
 //
 //       System.out.println("findByEmail : " + userRepository.findByEmail("martin@fastcampus.com"));
@@ -158,15 +159,27 @@ class UserRepositoryTest {
 //       //크거나 같은것 즉 이상으로 검색이 된다.(Before과 After는 같은값은 포함하지 않는다.)
 //       System.out.println("findByCreatedAtGreaterThanEqual : " + userRepository.
 //               findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(1)));
+//
+//        //사이값을 조회하는 Query문 (Between은 입력한 양쪽끝을 값을 포함해서 결과값을 나타냄)
+//        System.out.println("findByCreatedAtBetween : " + userRepository.
+//                findByCreatedAtBetween(LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1)));
+//        System.out.println("findByIdBetween : " + userRepository.
+//                findByIdBetween(1L, 2L));
+//        //Between과 아래 쿼리는 동일하게 돌아감
+//        System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.
+//                findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
+//
+//        //Id값이 Null이 아는것을 조회함
+//        System.out.println("findByIdIsNotNull : " + userRepository.findByIdIsNotNull());
+//
+//        //여러개의 이름을 List로 검색할때
+//        System.out.println("findByNameIn : " + userRepository.findByNameIn(Lists.newArrayList("martin", "dennis")));
 
-       //사이값을 조회하는 Query문 (Between은 입력한 양쪽끝을 값을 포함해서 결과값을 나타냄)
-       System.out.println("findByCreatedAtBetween : " + userRepository.
-               findByCreatedAtBetween(LocalDateTime.now().minusDays(1) , LocalDateTime.now().plusDays(1)));
-       System.out.println("findByIdBetween : " + userRepository.
-               findByIdBetween(1L,2L));
-       //Between과 아래 쿼리는 동일하게 돌아감
-       System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.
-               findByIdGreaterThanEqualAndIdLessThanEqual(1L,3L));
+        //데이터에 포함된 문자열로 찾기(Like검색을 좀더 편리하게 맵핑한것과 같음)
+        System.out.println("findByNameStartingWith : " +userRepository.findByNameStartingWith("den"));
+        System.out.println("findByNameEndingWith : " + userRepository.findByNameEndingWith("is"));
+        System.out.println("findByNameContains : " + userRepository.findByNameContains("nn"));
+        System.out.println("findByNameLike : " + userRepository.findByNameLike("%nn%"));
+    }
 
-   }
 }
