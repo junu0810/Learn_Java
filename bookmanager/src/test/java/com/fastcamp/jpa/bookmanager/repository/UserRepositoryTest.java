@@ -1,29 +1,14 @@
 package com.fastcamp.jpa.bookmanager.repository;
 
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import com.fastcamp.jpa.bookmanager.BookmanagerApplicationTests;
 import com.fastcamp.jpa.bookmanager.domain.UserTable;
-
-import net.bytebuddy.asm.Advice;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.transaction.Transactional;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -32,6 +17,7 @@ class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
+
 
     @Test
     void crud() {
@@ -180,6 +166,16 @@ class UserRepositoryTest {
         System.out.println("findByNameEndingWith : " + userRepository.findByNameEndingWith("is"));
         System.out.println("findByNameContains : " + userRepository.findByNameContains("nn"));
         System.out.println("findByNameLike : " + userRepository.findByNameLike("%nn%"));
+
+        //System.out.println("findFirstByNameWithSortParmas" + userRepository.findFirstByName("martin", sort.by(Order.desc("id"), Order.asc("email"))));
+
+        //System.out.println("findFirstByNameWithSortParmas" + userRepository.findFirstByName("martin", getSort()));
+//        private Sort getSort(){
+//            return Sort.by(
+//                    Order.desc("id"),
+//                    Order.asc("email")
+//            );
+//        }
     }
 
 }
